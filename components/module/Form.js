@@ -1,19 +1,64 @@
 import FormInput from "./FormInput";
-import { useState } from "react";
 
-function Form() {
-    const [name, setName] = useState("")
-    const nameChangeHandler = e =>{setName(e.target.value)}
-    console.log(name)
-
-	const [lastName, setLastName] = useState("");
-	const lastNameChangeHandler = e =>{setLastName(e.target.value)}
+function Form({ form, setForm }) {
+	const changeHandler = (e) => {
+		setForm({
+			...form,
+			[e.target.name]: e.target.value,
+		});
+	};
 
 	return (
 		<div>
-			<FormInput label="Name" name="name" type="text" value={name} onChange={nameChangeHandler} />
-			<FormInput label="Last Name" name="lastName" type="text" value={lastName} onChange={lastNameChangeHandler} />
-			<FormInput label="Email" name="email" type="text"  />
+			<FormInput
+				label="Name"
+				name="name"
+				type="text"
+				value={form.name}
+				onChange={changeHandler}
+			/>
+			<FormInput
+				label="Last Name"
+				name="lastName"
+				type="text"
+				value={form.lastName}
+				onChange={changeHandler}
+			/>
+			<FormInput
+				label="Email"
+				name="email"
+				type="text"
+				value={form.email}
+				onChange={changeHandler}
+			/>
+			<FormInput
+				label="Phone"
+				name="phone"
+				type="tel"
+				value={form.phone}
+				onChange={changeHandler}
+			/>
+			<FormInput
+				label="Address"
+				name="address"
+				type="text"
+				value={form.address}
+				onChange={changeHandler}
+			/>
+			<FormInput
+				label="Postal Code"
+				name="postalCode"
+				type="text"
+				value={form.postalCode}
+				onChange={changeHandler}
+			/>
+			<FormInput
+				label="Date"
+				name="date"
+				type="date"
+				value={form.date}
+				onChange={changeHandler}
+			/>
 		</div>
 	);
 }
